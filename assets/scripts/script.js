@@ -8,6 +8,7 @@ var searchHistory = [];
 var QueryUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey;
 
 //function for when the search button is clicked
+//gets city name, addes it to the array, saves to local storage, then calls functions for loading history and getting weather data
 $('.search').on("click", function (event) {
   event.preventDefault();
 
@@ -29,6 +30,7 @@ function loadSearchHistory() {
   searchHistory = JSON.parse(localStorage.getItem("city"));
   //clears list of search history before loading it again from local storage
   $("#search-history").empty();
+  //loops through and adds searched cities from local storage
   if (searchHistory.length > 0) {
     for (i = 0; i < searchHistory.length; i++) {
 
@@ -39,6 +41,8 @@ function loadSearchHistory() {
 
 
 //fetch weather for the city that is searched
+//makes a fetch call to get data, return it in json format, then display it using the created function
+//also checks for errors with the fetch query
 function getCityWeather(city) {
   var QueryUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey;
 
@@ -58,7 +62,7 @@ function getCityWeather(city) {
 }
 
 //allows search for city in search history list
-//clicking on the city will pass the city name into the getweather function
+//clicking on the city from the unordered list will pass the city name into the getweather function
 $("#search-history").on("click", function (event) {
   var selectedCity = $(event.target).closest("a").attr("id");
   getCityWeather(selectedCity);
@@ -66,6 +70,7 @@ $("#search-history").on("click", function (event) {
 
 function displayWeather(data) {
   //display city's current weather forecast for the current day
+  //sets the text of each weather data item into the main weather display
   $('#city-name').text(data.name + " (" + dayjs(data.dt * 1000).format("MM/DD/YYYY") + ") ").append(`<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png"></img>`);
   $("#city-temp").text("Temperature: " + data.main.temp.toFixed(1) + "°F");
   $("#city-wind").text("Wind: " + data.wind.speed.toFixed(1) + " mph");
@@ -79,6 +84,9 @@ function displayWeather(data) {
 
         for (i = 7; i <= data.list.length; i += 8) {
           // string variable to "create" card for weather forecast
+          //grabs each data and concats to corresponding weather data <p> tag.
+          //use of template literal :   https://wesbos.com/template-strings-html
+          //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
           var fiveDayForecast = `
       <div class="col-md-2 m-2 py-3 card text-white bg-info">
           <div class="card-body p-1">
