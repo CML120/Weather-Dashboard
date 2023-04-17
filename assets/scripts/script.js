@@ -2,8 +2,6 @@
 //https://home.openweathermap.org/api_keys
 
 var apiKey = "f7150342ebf16feafe131404f0de4510";
-var date = dayjs().format('dddd, MMMM Do YYYY');
-var dateTime = dayjs().format('YYYY-MM-DD HH:MM:SS')
 var city = "";
 var searchHistory = [];
 
