@@ -9,15 +9,6 @@ var searchHistory = [];
 
 var QueryUrl ='https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey;
 
-// fetch(QueryUrl)
-// .then(function (response) {
-//     return response.json();
-//   })
-//   .then(function (data) {
-//     console.log(data);
-//   });
-
-
   //function for when the search button is clicked
 $('.search').on("click", function (event) {
     event.preventDefault();
@@ -35,7 +26,7 @@ $('.search').on("click", function (event) {
 
   })
   
-  
+  //load search history from local storage
   function loadSearchHistory() {
     searchHistory = JSON.parse(localStorage.getItem("city"));
   
@@ -49,4 +40,35 @@ $('.search').on("click", function (event) {
   }
   }
 
+  //calls function to load search history
   loadSearchHistory();
+
+
+  //fetch weather for the city that is searched
+  function getCityWeather(city) {
+    var QueryUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey;
+  
+    fetch(QueryUrl)
+  
+      .then(function (response) {
+  
+        if (response.ok) {
+          response.json().then(function (data) {
+            displayWeather(data);
+          });
+        } else {
+          alert("Error: " + response.statusText);
+        }
+      })
+      .catch(function (error) {
+        alert("Unable to connect to OpenWeather");
+      })
+  
+  }
+
+//allows search for city in search history list
+//clicking on the city will pass the city name into the getweather function
+  $("#search-history").on("click", function(event){
+    var selectedCity = $(event.target).closest("a").attr("id");
+    getCityWeather(selectedCity);
+});
