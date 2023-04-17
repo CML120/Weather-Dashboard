@@ -20,6 +20,6 @@ WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city  
 
 
-<insert screenshot>
+![image](https://user-images.githubusercontent.com/126404917/232365507-cd2b0b1e-d918-4aa5-8076-b23c866543cd.png)
 
 <insert deployment link>
