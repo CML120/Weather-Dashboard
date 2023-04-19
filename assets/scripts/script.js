@@ -8,7 +8,7 @@ var searchHistory = [];
 var QueryUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey;
 
 //function for when the search button is clicked
-//gets city name, addes it to the array, saves to local storage, then calls functions for loading history and getting weather data
+//gets city name, adds it to the array, saves to local storage, then calls functions for loading history and getting weather data
 $('.search').on("click", function (event) {
   event.preventDefault();
 
@@ -44,7 +44,7 @@ function loadSearchHistory() {
 //makes a fetch call to get data, return it in json format, then display it using the created function
 //also checks for errors with the fetch query
 function getCityWeather(city) {
-  var QueryUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey;
+  var QueryUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey +"&units=imperial";
 
   fetch(QueryUrl)
     .then(function (response) {
@@ -72,7 +72,7 @@ function displayWeather(data) {
   //display city's current weather forecast for the current day
   //sets the text of each weather data item into the main weather display
   $('#city-name').text(data.name + " (" + dayjs(data.dt * 1000).format("MM/DD/YYYY") + ") ").append(`<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png"></img>`);
-  $("#city-temp").text("Temperature: " + data.main.temp.toFixed(1) + "°F");
+  $("#city-temp").text("Temperature: " + data.main.temp + "°C");
   $("#city-wind").text("Wind: " + data.wind.speed.toFixed(1) + " mph");
   $("#city-humidity").text("Humidity: " + data.main.humidity + "%");
 
@@ -92,7 +92,7 @@ function displayWeather(data) {
           <div class="card-body p-1">
               <h5 class="card-title">` + dayjs(data.list[i].dt * 1000).format("MM/DD/YYYY") + `</h5>
               <img src="https://openweathermap.org/img/wn/` + data.list[i].weather[0].icon + `.png" alt="rain">
-              <p class="card-text">Temp: ` + data.list[i].main.temp + `</p>
+              <p class="card-text">Temp: ` + data.list[i].main.temp + `" °C </p>
               <p class="card-text">Wind Speed: ` + data.list[i].wind.speed + ` MPH </p>
               <p class="card-text">Humidity: ` + data.list[i].main.humidity + `</p>
           </div>
