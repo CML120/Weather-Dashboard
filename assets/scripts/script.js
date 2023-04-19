@@ -77,7 +77,7 @@ function displayWeather(data) {
   $("#city-humidity").text("Humidity: " + data.main.humidity + "%");
 
   //five day forecast
-  fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + data.name + "&appid=ce39e7239416ad754359ca762d28521a&units=imperial")
+  fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + data.name + "&appid=" + apiKey +"&units=imperial")
     .then(function (response) {
       response.json().then(function (data) {
         $("#five-day-forecast").empty();
