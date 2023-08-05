@@ -21,6 +21,9 @@ THEN I am again presented with current and future conditions for that city
 
 
 
-![image](https://user-images.githubusercontent.com/126404917/232365507-cd2b0b1e-d918-4aa5-8076-b23c866543cd.png)
+![Alt text](image.png)
 
 Page Deployed:  https://cml120.github.io/Weather-Dashboard/
+
+Sources:  
+Mouse Cursor:  [Sunny Mouse Cursor](https://www.cursors-4u.com/cursor/2012/01/27/cloudy-with-a-chance-of-sun.html  )

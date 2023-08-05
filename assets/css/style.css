@@ -1,0 +1,123 @@
+* {
+    cursor: url("../images/sun.cur"), url("../images/sun.cur"), default;
+  }
+
+/* Body font */
+body {
+    font-family: "Inconsolata", sans-serif;
+    background-image: url("../images/weatherbg.jpg");
+    background-size: cover;
+    /* Set the background image to cover the entire body */
+    background-repeat: no-repeat;
+    /* Prevent the background image from repeating */
+    background-position: center center;
+    /* Center the background image */
+
+}
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+    /* Remove default margin for the body and html */
+    padding: 0;
+    /* Remove default padding for the body and html */
+}
+
+
+/* Heading font */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Inconsolata", sans-serif;
+}
+
+/* Search input font */
+.input-group .textVal,
+#five-day-forecast {
+    font-family: "Inconsolata", sans-serif;
+}
+
+/* Weather data font */
+#city-name,
+#city-temp,
+#city-wind,
+#city-humidity {
+    font-family: "Ysabeau+SC", sans-serif;
+}
+
+/* Search history font */
+#search-history a {
+    font-family: "Inconsolata", sans-serif;
+}
+
+header {
+    background-color: #007bff;
+    /* Primary color for the background */
+    padding: 10px;
+    /* Add some padding to the header */
+}
+
+/* Title styles */
+h1 {
+    font-size: 48px;
+    color: rgb(138, 246, 253);
+    text-align: center;
+    /* Center the title text */
+    text-shadow: 4px 4px 6px rgb(115, 40, 255);
+    /* Add text shadow effect */
+}
+
+a:hover {
+    transform: scale(1.2);
+    background-color: #007bff;
+}
+
+#search-history a {
+    display: block;
+    /* Make the links take the full width of their container */
+    padding: 5px;
+    text-decoration: none;
+    color: #333;
+    /* Default text color */
+}
+
+/* Change link color on hover */
+#search-history a:hover {
+    background-color: #42d9ff;
+    /* Add a background color on hover */
+    color: #2f00ff;
+    /* Change text color on hover */
+}
+
+/* Optional: Add some transition effect for smoother color change */
+#search-history a {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+/*Add responsive styles for smaller screens */
+@media (max-width: 768px) {
+    h1.title-style {
+        font-size: 24px;
+        /* Decrease the font size for smaller screens */
+    }
+}
+
+/* Add media queries for smaller screens */
+@media (max-width: 576px) {
+
+    /* Adjust font size for smaller screens */
+    h1.title-style {
+        font-size: 20px;
+    }
+
+    /* Adjust the layout for smaller screens */
+    main {
+        padding: 10px;
+        /* Add some padding to the main content on smaller screens */
+    }
+}
